@@ -6,6 +6,7 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/3.1/userguide/tutorial_java_projects.html
  */
+ apply plugin: 'application'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -28,3 +29,14 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
 }
+
+
+
+task myRun(type: JavaExec) {
+  classpath sourceSets.main.runtimeClasspath
+  main = "Entry3"
+  enableAssertions = true
+}
+
+
+
