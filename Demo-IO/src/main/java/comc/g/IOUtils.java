@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 
@@ -54,6 +55,32 @@ public class IOUtils {
 		
 		
 	}
+	
+	static public void writeAPersonIntoStream(OutputStream oStream) throws IOException{
+		
+		ObjectOutputStream out = new ObjectOutputStream(oStream);
+		
+		Person person = new Person();
+		person.setAge(28);
+		person.setName("Vicky");
+		
+		try {
+			if(out != null)
+				out.writeObject(person);
+		} finally {
+			// TODO: handle finally clause
+			if(out != null)
+				out.close();
+		}
+		
+		
+		
+		
+	}
+
+	
+	
+	
 	
 	
 	
