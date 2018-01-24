@@ -3,6 +3,13 @@ package comc.g;
 import java.io.Serializable;
 
 public class Person implements Serializable {
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name + "/" + age ;
+	}
+	
 	private String name;
 //	private transient int age;
 	private int age;

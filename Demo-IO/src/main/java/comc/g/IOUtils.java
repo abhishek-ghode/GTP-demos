@@ -1,12 +1,16 @@
 package comc.g;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 public class IOUtils {
@@ -14,6 +18,7 @@ public class IOUtils {
 		
 //		try-finally block
 		
+//		Layering streams
 		DataOutputStream dOut = new DataOutputStream(oStream);
 		
 		try{
@@ -67,6 +72,11 @@ public class IOUtils {
 		try {
 			if(out != null)
 				out.writeObject(person);
+			
+//			person = new Person();
+//			person.setAge(35);
+			person.setName(new String("Vikas"));
+			out.writeObject(person);
 		} finally {
 			// TODO: handle finally clause
 			if(out != null)
@@ -78,6 +88,52 @@ public class IOUtils {
 		
 	}
 
+	
+	public static void readAPerson(InputStream iStream) throws IOException, ClassNotFoundException{
+		
+		Person pRef;
+		
+		ObjectInputStream in = new ObjectInputStream(iStream);
+		
+		pRef = (Person) in.readObject();
+		System.out.println(pRef);
+
+		Person pRef2 = (Person) in.readObject();
+		System.out.println(pRef2);
+		
+		
+		
+	}
+	
+	private static InputStreamReader iReader; 
+	private static BufferedReader buff; 
+	private static PrintWriter out;
+	
+//	static initializer
+	
+	static{
+		iReader = new InputStreamReader(System.in);
+		buff = new BufferedReader(iReader);
+		out = new PrintWriter(System.out,true);
+	}
+	
+	public static String readFromStdIn() throws IOException{
+		return buff.readLine();
+	}
+	
+	
+	public static void displayAString(String message){
+		out.println(message);
+//		out.flush();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
