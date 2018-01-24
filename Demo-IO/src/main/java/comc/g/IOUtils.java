@@ -121,6 +121,15 @@ public class IOUtils {
 		return buff.readLine();
 	}
 	
+	public static String readFromIn(InputStream in) throws IOException{
+		InputStreamReader iReader = new InputStreamReader(in);
+		BufferedReader buff = new BufferedReader(iReader);
+		
+		while(true){
+			System.out.println(buff.readLine());
+		}
+		
+	}
 	
 	public static void displayAString(String message){
 		out.println(message);
